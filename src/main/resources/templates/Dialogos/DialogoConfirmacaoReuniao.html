@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<header th:fragment="dialogos">
+
+<div class="modal fade" id="confirmacaoExclusaoReuniao" tabindex="-1"
+	role="dialog" data-keyboard="false" data-backdrop="static">
+	<div class="modal-dialog">
+
+		<form th:action="@{/reuniao}" method="POST">
+			<input type="hidden" name="_method" value="DELETE" />
+			<div class="modal-content">
+
+				<div class="modal-header">
+
+					<h4 style="text-align: left; text-shadow: aqua" class="modal-title">Voce
+						tem certeza?</h4>
+
+
+				</div>
+
+				<div class="modal-body">
+
+					<span>tem certeza que deseja apagar a Reunião</span>
+
+				</div>
+
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Excluir</button>
+				</div>
+
+			</div>
+		</form>
+
+	</div>
+
+</div>
+
+
+</header>
+
+
+<script src="/js/jquery-1.12.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/reuniao.js"></script>
+</html>

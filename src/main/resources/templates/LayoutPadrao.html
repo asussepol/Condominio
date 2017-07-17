@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="cabecalho">
+<meta charset="UTF-8" />
+<title>Condominio</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<header th:fragment="navegacao">
+	<body background="/images/brickwall.png">
+
+
+		<nav class="navbar navbar-default navbar-fixed-top ">
+
+			<div class="container-fluid">
+
+				<div class="navbar-header">
+
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#navBar">
+
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+
+					<a class="navbar-brand" href="#page-top">CONDOMINIO</a>
+
+
+				</div>
+
+				<div class="collapse navbar-collapse" id="navBar">
+
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+								Sign Up</a></li>
+						<li><a href="login.html"><span
+								class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+
+
+					<ul class="nav navbar-nav navbar-left">
+						<li class="active"><a href="#page-top">Home</a></li>
+						<li><a href="#servicos">Serviços</a></li>
+						<li><a href="#contato">Contatos</a></li>
+						<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastros
+						<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Cadastro Unidades</a></li>
+							<li><a href="#">Cadastro Ocorrências</a></li>
+						
+						</ul>
+						</li>
+
+					</ul>
+				</div>
+
+			</div>
+
+		</nav>
+		<!--/ menu da aplicação -->
+
+
+		<section th:fragment="conteudo">
+
+			<p>conteúdo principal</p>
+
+		</section>
+
+		<script src="/js/jquery-1.12.3.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script type="/js/condominio.js"></script>
+
+	</body>
+
+</header>
+</html>

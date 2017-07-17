@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="LayoutPadrao :: cabecalho">
+<title>Cadastro de Reuniões</title>
+<meta charset="utf-8" />
+</head>
+
+<head th:replace="LayoutPadrao::navegacao"></head>
+
+
+<section class="row">
+
+	
+	
+	<form class="form-horizontal form-group" method="POST"
+		action="/reuniao" th:object="${reuniao}">
+		
+		
+		
+		<div th:replace="Mensagens::mensagem-sucesso"></div>
+		<div th:replace="Mensagens::mensagem-erro"></div>
+
+		<div class="panel panel-default"
+			style="background: url(.../images/brickwall.png)">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h3 class="panel-title titulo-panel"
+						style="background-color: silver">Cadastro Reuniões</h3>
+					<a class="btn-link link-panel" href="/reuniao">Pesquisa-Reuniões</a>
+				</div>
+
+			</div>
+
+			<div class="panel-body">
+				
+				
+				<input type="hidden" th:field="*{codigo}" />
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('dataReuniao')}?has-error">
+
+		
+					<label for="dataReuniao" class="col-md-2 control-label"
+						style="text-align: justify">Data da Reunião</label>
+
+					<div class=" col-md-2 ">
+						<input type="text" id="dataReuniao" class="form-control" 
+							name="dataReuniao" th:field="*{dataReuniao}"/>
+					</div>
+
+
+
+				</div>
+
+
+
+			
+				<div class="form-group" th:classappend="${#fields.hasErrors('pauta')}?has-error">
+
+					<label for="pauta" class="col-md-2 control-label"
+						style="text-align: justify">Pauta</label>
+
+					<div class="col-md-8">
+						<input type="text" id="pauta" class="form-control" name="pauta" th:field="*{pauta}"/>
+					</div>
+
+
+				</div>
+
+				
+
+				<!-- urgente -->
+
+				<div class="form-group " th:classappend="${#fields.hasErrors('urgente')}?has-error">
+
+					<label for="urgente" class="col-md-2 control-label"
+						style="text-align: justify">Urgente</label>
+					<div class="col-md-8 radio">
+						<label> <input  value="sim" type="radio" name="urgente" th:field="*{urgente}"
+							 /> Sim
+						</label> <label> <input value="nao" type="radio" name="urgente" th:field="*{urgente}" />
+							Não
+						</label>
+
+					</div>
+				</div>
+
+				<!-- local -->
+
+				<div class="form-group" th:classappend="${#fields.hasErrors('local')}?has-error">
+
+					<label for="local" class=" col-md-2 control-label"
+						style="text-align: justify">Local</label>
+
+					<div class="col-md-3">
+						<input type="text" id="local" class="form-control" name="local" th:field="*{local}" />
+					</div>
+
+				</div>
+
+				<!-- reletorio -->
+
+				<div class="form-group">
+
+					<label for="observacao" class="col-md-2 control-label"
+						style="text-align: justify">Observações</label>
+					<div class="col-md-8">
+						<textarea name="observacao" rows="5" class="form-control"
+							id="observacao" th:field="*{observacao}"></textarea>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+</section>
+
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:fragment="mensagem-erro">
+
+
+	<div class="alert alert-danger" role="alert"
+		th:if="${#fields.hasAnyErrors()}">
+		<div th:each="detailedErrors :${#fields.detailedErrors()} ">
+			<span th:text="${detailedErrors.message}"></span>
+		</div>
+	</div>
+
+</div>
+
+<div th:fragment="mensagem-sucesso">
+	
+	<div class="alert alert-success alert-dismissible" role="alert"
+		th:if="${!#strings.isEmpty(mensagem)}"
+		style="padding-left: 70px; padding-right: 70px">
+
+		<button type="button" class="close" data-dismiss="alert"></button>
+		<span th:text="${mensagem}"> Unidade salva com Sucesso!</span>
+
+	</div>
+
+</div>
+</html>
