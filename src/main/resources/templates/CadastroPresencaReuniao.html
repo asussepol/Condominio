@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="LayoutPadrao :: cabecalho">
+<title>Cadastro de Presença de Reuniões</title>
+<meta charset="utf-8" />
+</head>
+
+<head th:replace="LayoutPadrao::navegacao"></head>
+
+
+<section class="row">
+
+
+
+	<form class="form-horizontal form-group" method="POST"
+		action="/presencaReuniao" th:object="${presencaReuniao}">
+
+
+
+		<div th:replace="Mensagens::mensagem-sucesso"></div>
+		<div th:replace="Mensagens::mensagem-erro"></div>
+
+		<div class="panel panel-default"
+			style="background: url(.../images/brickwall.png)">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h3 class="panel-title titulo-panel"
+						style="background-color: silver">Cadastro Presença de
+						Reuniões</h3>
+					<a class="btn-link link-panel" href="/presencaReuniao">Pesquisa-Presença
+						de Reuniões</a>
+				</div>
+
+			</div>
+
+			<div class="panel-body">
+
+
+				<input type="hidden" th:field="*{codigo}" />
+
+				<div class="form-group" >
+
+
+					<label for="idReuniao" class="col-md-2 control-label"
+						style="text-align: justify">Numero da Reunião</label>
+
+					<div class=" col-md-3 ">
+						<select id="idReuniao" name="idReuniao" class="form-control">
+							<option>Selecione</option>
+							<option th:each="reunia:${reuniao}" th:value="${reunia.codigo}"
+								th:text="${reunia.codigo}"  th:field="*{reuniao.codigo}"></option>
+
+						</select>
+					</div>
+
+
+
+				</div>
+
+
+
+				<div class="form-group">
+
+
+					<label for="idUnidade" class="col-md-2 control-label"
+						style="text-align: justify">Numero da Unidades</label>
+
+					<div class=" col-md-3 ">
+						<select id="idUnidade" name="idUnidade" class="form-control">
+							<option>Selecione</option>
+							<option th:each="unidad:${unidade}" th:value="${unidad.codigo}"
+								th:text="${unidad.numeroUnidade}" th:field="*{unidades.codigo}"></option>
+
+						</select>
+					</div>
+
+
+
+				</div>
+
+
+				<div class="form-group" th:classappend="${#fields.hasErrors('nomeParticipante')}?has-error">
+					<label for="nomeParticipante" class="col-md-2 control-label"
+						style="text-align: justify">Nome do Participante</label>
+
+					<div class=" col-md-6 ">
+						<input type="text" id="nomeParticipante" class="form-control"
+							name="nomeParticipante" th:field="*{nomeParticipante}" />
+					</div>
+				</div>
+
+				<div class="form-group" th:classappend="${#fields.hasErrors('procuracao')}?has-error">
+					<label for="procuracao" class="col-md-2 control-label"
+						style="text-align: justify">Procuração</label>
+
+					<div class="col-md-8 radio">
+						<label> <input value="sim" type="radio" name="procuracao" th:field="*{procuracao}"/>
+							Sim
+						</label> <label> <input value="nao" type="radio" name="procuracao"  th:field="*{procuracao}"/>Não
+						</label>
+
+					</div>
+				</div>
+
+				<div class="form-group" th:classappend="${#fields.hasErrors('observacao')}?has-error">
+					<label for="procuracao" class="col-md-2 control-label"
+						style="text-align: justify">Observação</label>
+
+					<div class="col-md-8">
+						<textarea name="observacao" rows="5" class="form-control"
+							id="observacao"  th:field="*{observacao}"></textarea>
+
+					</div>
+				</div>
+
+
+
+
+
+
+				<div class="form-group">
+
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+</section>
+
+
+</html>

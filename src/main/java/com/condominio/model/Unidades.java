@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -66,6 +68,15 @@ public class Unidades {
 		return ocorrencias;
 	}
 	
+	@OneToMany(mappedBy="unidades", cascade=CascadeType.ALL)
+	public List<ReservaAreaComum> reservas;
+	
+	public List<ReservaAreaComum> getReservas() {
+		return reservas;
+	}
+	public void setReservas(List<ReservaAreaComum> reservas) {
+		this.reservas = reservas;
+	}
 	public void setOcorrencias(List<Ocorrencia> ocorrencias) {
 		this.ocorrencias = ocorrencias;
 	}

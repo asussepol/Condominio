@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="cabecalho">
 <meta charset="UTF-8" />
 <title>Condominio</title>
-<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+
 </head>
 
 <header th:fragment="navegacao">
@@ -25,7 +28,7 @@
 							class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand" href="#page-top">CONDOMINIO</a>
+					<a class="navbar-brand" href="#page-top">CONDOMÍNIO</a>
 
 
 				</div>
@@ -33,26 +36,39 @@
 				<div class="collapse navbar-collapse" id="navBar">
 
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-								Sign Up</a></li>
+						<form action="/logout" method="post">
+
+							<li><button type="submit">
+									<span class="glyphicon glyphicon-user"></span> logout
+								</button></li>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+						</form>
 						<li><a href="login.html"><span
 								class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					</ul>
 
 
 					<ul class="nav navbar-nav navbar-left">
-						<li class="active"><a href="#page-top">Home</a></li>
+						<li class="active"><a href="/index">Home</a></li>
 						<li><a href="#servicos">Serviços</a></li>
 						<li><a href="#contato">Contatos</a></li>
-						<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastros
-						<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Cadastro Unidades</a></li>
-							<li><a href="#">Cadastro Ocorrências</a></li>
-						
-						</ul>
-						</li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Cadastros <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li sec:authorize="hasRole('ROLE_ADMIN')"><a
+									th:href="@{/unidades/novo}">Cadastrar Unidades</a></li>
+								<li sec:authorize="hasRole('ADMIN')"><a
+									th:href="@{/ocorrencias/novo}">Cadastrar Ocorrências</a></li>
+								<li sec:authorize="hasRole('ADMIN')"><a
+									th:href="@{/reuniao/novo}">Cadastrar Reunião </a></li>
+								<li><a th:href="@{/presencaReuniao/novo}">Cadastrar
+										Presença em Reunião</a></li>
+								<li sec:authorize="hasRole('ADMIN')"><a
+									th:href="@{/areaComum/novo}">Cadastro Área Comum</a></li>
+								<li><a th:href="@{/reservaAreaComum/novo}">Reservar
+										Área Comum</a></li>
+
+							</ul></li>
 
 					</ul>
 				</div>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="LayoutPadrao::cabecalho">
+<meta charset="utf-8" />
+<title>Pesquisa Presenca de Reunioes</title>
+<link rel="stylesheet" type="text/css" th:href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" th:href="/css/style.css" />
+</head>
+
+<head th:replace="LayoutPadrao:: navegacao"></head>
+
+<header th:replace="/Dialogos/DialogoPresencaReuniao:: dialogos"></header>
+
+
+<div class="panel panel-default"
+	style="margin-top: 100px; border-style: outset">
+
+	<div class="panel-heading">
+		<div class="clearfix">
+			<h3 class="panel-title titulo-panel">Pesquisa Presença de
+				Reuniões</h3>
+			<a class="btn btn-link link-panel" href="presencaReuniao/novo">Novo</a>
+
+		</div>
+
+	</div>
+
+	<div class="panel-body">
+		<div class="table-responsive">
+			<table
+				class="table table-bordered table-striped table-hover  datatables-js">
+				<thead>
+					<tr>
+						<th class="text-center col-md-1">#</th>
+						<th class="text-center col-md-2">Número da Reuniao</th>
+						<th class="text-center col-md-2">Número da Unidade</th>
+						<th class="text-center col-md-2">Nome do Participante</th>
+						<th class="text-center col-md-2">Procuração</th>
+						<th class="text-center col-md-1">Observação</th>
+						<th class="col-md-1"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="presenca : ${presenca}">
+						<td class="text-center" th:text="${presenca.codigo}"></td>
+						<td class="text-center" th:text="${presenca.reuniao.codigo}"></td>
+						<td class="text-center" th:text="${presenca.unidades.codigo}"></td>
+						<td class="text-center" th:text="${presenca.nomeParticipante}"></td>
+						<td class="text-center" th:text="${presenca.procuracao}"></td>
+						<td class="text-center" th:text="${presenca.observacao}"></td>
+						<td class="texte-center"><a class="btn btn=link btn-xs"
+							th:href="@{/presencaReuniao/{codigo}(codigo=${presenca.codigo})}">
+								<span class="glyphicon  glyphicon-pencil" aria-hidden="true"></span>
+						</a> <a class="btn btn-link btn-xs" data-toggle="modal"
+						data-target="#confirmacaoExclusaoPresenca" th:attr="data-codigo=${presenca.codigo}"><span
+								class="glyphicon glyphicon-remove-sign" aria-hidden="true" ></span>
+
+						</a></td>
+					</tr>
+
+					<tr>
+						<td colspan="7" th:if="${#lists.isEmpty(presencaReuniao)}">nenhuma
+							reunião foi encontrada</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
+<script src="/js/presencaReuniao.js"></script>
+</html>

@@ -78,6 +78,7 @@ public class ReuniaoController {
 		
 		//Unidades unidade=condominios.findOne(codigo);
 		ModelAndView mv= new ModelAndView("CadastroReuniao");
+		
 		mv.addObject(reuniao);
 		return mv;
 	}

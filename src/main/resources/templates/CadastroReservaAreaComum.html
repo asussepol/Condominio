@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="LayoutPadrao :: cabecalho">
+<title>Cadastro de Reserva Área Comum</title>
+<meta charset="utf-8" />
+</head>
+
+<head th:replace="LayoutPadrao::navegacao"></head>
+
+
+<section class="row">
+
+
+
+	<form class="form-horizontal form-group" method="POST"
+		action="/reservaAreaComum" th:object="${reservaAreaComum}">
+
+
+
+		<div th:replace="Mensagens::mensagem-sucesso"></div>
+		<div th:replace="Mensagens::mensagem-erro"></div>
+
+		<div class="panel panel-default"
+			style="background: url(.../images/brickwall.png)">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h3 class="panel-title titulo-panel"
+						style="background-color: silver">Cadastro de Reserva Área Comum</h3>
+					<a class="btn-link link-panel" href="/reservaAreaComum">Pesquisa-Reserva Área Comum</a>
+				</div>
+
+			</div>
+
+			<div class="panel-body">
+
+
+				<input type="hidden" th:field="*{codigo}" />
+
+				<div class="form-group" >
+
+
+					<label for="idUnidade" class="col-md-2 control-label"
+						style="text-align: justify">Numero da Unidade</label>
+
+					<div class=" col-md-3 ">
+						<select id="idUnidade" name="idUnidade" class="form-control">
+							<option>Selecione</option>
+							<option th:each="unidad:${unidade}" th:value="${unidad.codigo}"
+								th:text="${unidad.numeroUnidade}" th:field="*{unidades.codigo}"></option>
+
+						</select>
+					</div>
+
+
+
+				</div>
+
+
+
+				<div class="form-group">
+
+
+					<label for="idAreaComum" class="col-md-2 control-label"
+						style="text-align: justify">Numero da Área Comum</label>
+
+					<div class=" col-md-3 ">
+						<select id="idAreaComum" name="idAreaComum" class="form-control">
+							<option>Selecione</option>
+							<option th:each="area:${areaComum}" th:value="${area.codigo}"
+								th:text="${area.codigo}" th:field="*{areaComum.codigo}"></option>
+
+						</select>
+					</div>
+
+
+
+				</div>
+
+
+				<div class="form-group"  th:classappend="${#fields.hasErrors('dataReserva')}?has-error">
+					<label for="dataReserva" class="col-md-2 control-label"
+						style="text-align: justify">Data da Reserva</label>
+
+					<div class=" col-md-4 ">
+						<input type="text" id="dataReserva" class="form-control"
+							name="dataReserva" th:field="*{dataReserva}" />
+					</div>
+				</div>
+
+				<div class="form-group"  th:classappend="${#fields.hasErrors('nomeEvento')}?has-error">
+					<label for="nomeEvento" class="col-md-2 control-label"
+						style="text-align: justify">Nome do Evento</label>
+					
+					<div class=" col-md-6 ">
+						<input type="text" id="nomeEvento" class="form-control"
+							name="nomeEvento" th:field="*{nomeEvento}"/>
+					</div>
+					
+				</div>
+
+				<div class="form-group"  th:classappend="${#fields.hasErrors('inicio')}?has-error">
+					<label for="inicio" class="col-md-2 control-label"
+						style="text-align: justify">Início</label>
+					
+					<div class=" col-md-2 ">
+						<input type="text" id="inicio" class="form-control"
+							name="inicio" th:field="*{inicio}" />
+					</div>
+					
+				</div>
+				
+				<div class="form-group"  th:classappend="${#fields.hasErrors('fim')}?has-error">
+					<label for="fim" class="col-md-2 control-label"
+						style="text-align: justify">Fim</label>
+					
+					<div class=" col-md-2 ">
+						<input type="text" id="fim" class="form-control"
+							name="fim" th:field="*{fim}"/>
+					</div>
+					
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('quantidadePessoas')}?has-error">
+					<label for="quantidadePessoas" class="col-md-2 control-label"
+						style="text-align: justify">Quantidade de Pessoas</label>
+					
+					<div class=" col-md-2 ">
+						<input type="text" id="quantidadePessoas" class="form-control"
+							name="quantidadePessoas" th:field="*{quantidadePessoas}" />
+					</div>
+					
+				</div>
+
+
+
+
+
+
+				<div class="form-group">
+
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+</section>
+
+
+</html>
