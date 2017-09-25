@@ -2,6 +2,7 @@ package com.condominio.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -9,6 +10,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 
 	@Override
@@ -23,7 +25,8 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 				.antMatchers("/ocorrencias/novo").hasRole("ADMIN")
 				.antMatchers("/presencaReuniao/novo").hasAnyRole("ADMIN","USER")
 				.antMatchers("/reservaAreaComum/novo").hasAnyRole("ADMIN","USER")
-				.antMatchers("/index/").permitAll()
+				.antMatchers("/**").permitAll()
+				.antMatchers("/resources/**").permitAll()
 				.anyRequest()
 				.authenticated()
 			.and()
@@ -41,6 +44,9 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 			
 		
 	}
+	
+	
+	
 	
 	
 	
