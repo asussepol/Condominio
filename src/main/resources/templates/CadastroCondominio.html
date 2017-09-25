@@ -17,6 +17,9 @@
 
 	<form class="form-horizontal" method="POST" action="/unidades"
 		th:object="${unidades}">
+		
+		<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
 
 		<div th:replace="Mensagens::mensagem-sucesso"></div>
 
