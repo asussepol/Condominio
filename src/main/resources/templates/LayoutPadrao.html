@@ -36,13 +36,13 @@
 				<div class="collapse navbar-collapse" id="navBar">
 
 					<ul class="nav navbar-nav navbar-right">
-						<form action="/logout" method="post">
 
-							<li><button type="submit">
-									<span class="glyphicon glyphicon-user"></span> logout
-								</button></li>
-							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-						</form>
+
+						<li><a th:hef="@{/logout}"> <span class="glyphicon glyphicon-user"></span>
+								logout
+						</a>></li>
+
+
 						<li><a href="login.html"><span
 								class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					</ul>
