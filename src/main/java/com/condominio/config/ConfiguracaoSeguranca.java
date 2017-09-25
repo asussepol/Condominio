@@ -28,7 +28,7 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 			.formLogin().loginPage("/login").permitAll()
 			.and()
 			.logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+			.logoutSuccessUrl("/index?logout");
 	}
 
 	@Override
